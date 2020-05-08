@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Card from "./components/card/Card";
-import ResultText from "./components/resultText/ResultText";
+import ResultTextView from "./components/resultText/ResultTextView";
 import * as selectors from "../../../store/selectors";
 import * as actions from "../../../store/actions";
 import "./cardList.css";
@@ -14,7 +14,7 @@ const CardList = () => {
 
   return (
     <div className="result">
-      {isDisplayText && <ResultText error={error} total={total} />}
+      {isDisplayText && <ResultTextView error={error} total={total} />}
       <InfiniteScroll
         dataLength={photos.length} //This is important field to render the next data
         next={() => dispatch(actions.getPhotos(query, page + 1))}

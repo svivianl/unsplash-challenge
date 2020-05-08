@@ -27,8 +27,12 @@
 .photo-details {
   display: flex;
   flex-direction: column;
-  padding: 2em 0;
+  padding: 1em 0;
   justify-content: center;
+}
+
+.photo-details > h4 {
+  text-align: center;
 }
 
 .photo-details-modal > p {
@@ -55,7 +59,7 @@
     min-width: 15em;
     min-height: 15em;
     max-width: 40vw;
-    max-height: 50vh;
+    max-height: 70vh;
   }
 
   .photo-details-modal > p {

@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import PhotoDetail from "./components/photoDetail/PhotoDetail";
+import PhotoDetailView from "./components/photoDetail/PhotoDetailView";
+import * as actions from "../../../../../../../store/actions";
+import * as selectors from "../../../../../../../store/selectors";
 import "../../../../../../mainPage.css";
 import "./photoDetails.css";
 
 const PhotoDetails = ({
+  id,
   created_at,
   likes,
   alt_description,
@@ -13,7 +17,17 @@ const PhotoDetails = ({
   urls,
   handleClose,
 }) => {
+  const dispatch = useDispatch();
+  const photoDetails = useSelector(selectors.getPhotoDetails);
+
+  useEffect(() => {
+    if (id) {
+      dispatch(actions.getPhotoDetails(id));
+    }
+  }, [id, dispatch]);
+
   const { name, location } = user;
+  const { location: photoLocation } = photoDetails;
   const url = urls.small;
   const createdAt = moment.utc(created_at).format("MMMM D, YYYY");
 
@@ -26,23 +40,32 @@ const PhotoDetails = ({
             <div>
               <img alt={alt_description} src={url} />
             </div>
-            <h3>Photography's details</h3>
+            <h3>Photography's details:</h3>
+          </div>
+          <div className="photo-details">
+            {description && (
+              <PhotoDetailView label="Description" value={description} />
+            )}
+            <PhotoDetailView label="Likes" value={likes} />
+            {photoLocation && photoLocation.city && photoLocation.country && (
+              <PhotoDetailView
+                label="Location"
+                value={`${photoLocation.city} - ${photoLocation.country}`}
+              />
+            )}
+            <PhotoDetailView label="Created at" value={createdAt} />
           </div>
           <hr></hr>
           <div className="photo-details">
-            {description && (
-              <PhotoDetail label="Description" value={description} />
-            )}
-            <PhotoDetail label="Author" value={name}>
+            <h4>Author's details:</h4>
+            <PhotoDetailView label="Name" value={name}>
               {user && user.profile_image && user.profile_image.small && (
                 <div className="profile-image">
                   <img alt={name} src={user.profile_image.small} />
                 </div>
               )}
-            </PhotoDetail>
-            <PhotoDetail label="Location" value={location} />
-            <PhotoDetail label="Likes" value={likes} />
-            <PhotoDetail label="Created at" value={createdAt} />
+            </PhotoDetailView>
+            <PhotoDetailView label="Location" value={location} />
           </div>
         </div>
       </div>
