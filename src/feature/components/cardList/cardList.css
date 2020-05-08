@@ -11,3 +11,9 @@
   justify-content: space-around;
   align-items: center;
 }
+
+@media (min-width: 600px) {
+  .result {
+    max-width: 80em;
+  }
+}
