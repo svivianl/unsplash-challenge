@@ -1,6 +1,6 @@
 # Unsplash
 
-Responsive Unsplash image app
+Responsive Unsplash gallery app.
 
 ## Images
 
