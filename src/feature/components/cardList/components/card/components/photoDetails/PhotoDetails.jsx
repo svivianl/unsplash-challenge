@@ -58,7 +58,7 @@ const PhotoDetails = ({
           <hr></hr>
           <div className="photo-details">
             <h4>Author's details:</h4>
-            <PhotoDetailView label="Name" value={name}>
+            <PhotoDetailView label="Name" value={name} alignCenter={true}>
               {user && user.profile_image && user.profile_image.small && (
                 <div className="profile-image">
                   <img alt={name} src={user.profile_image.small} />

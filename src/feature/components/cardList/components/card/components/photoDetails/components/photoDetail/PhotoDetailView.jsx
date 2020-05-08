@@ -1,9 +1,10 @@
 import React from "react";
+import className from "classnames";
 import "./photoDetailView.css";
 
-const PhotoDetailView = ({ label, value, children }) => {
+const PhotoDetailView = ({ label, value, alignCenter = false, children }) => {
   return (
-    <div className="detail">
+    <div className={className("detail", alignCenter ? "align-center" : null)}>
       <strong>{label}:</strong> {children} <span>{value}</span>
     </div>
   );
