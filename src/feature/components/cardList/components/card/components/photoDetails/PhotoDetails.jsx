@@ -3,15 +3,22 @@ import PhotoDetail from "./components/photoDetail/PhotoDetail";
 import "../../../../../../mainPage.css";
 import "./photoDetails.css";
 
-const PhotoDetails = ({ user, description, handleClose }) => {
-  const { name, location } = user;
+const PhotoDetails = ({ photo, handleClose }) => {
+  const { name, location } = photo.user;
+  const url = photo.urls.small;
+  const { alt_description, description } = photo;
 
   return (
     <div className="backdrop" onClick={handleClose}>
       <div className="photo-details-modal">
         <p onClick={handleClose}>X</p>
         <div className="photo-details-modal-content">
-          <h3>Photography's details</h3>
+          <div className="title">
+            <div>
+              <img alt={alt_description} src={url} />
+            </div>
+            <h3>Photography's details</h3>
+          </div>
           <hr></hr>
           <div className="photo-details">
             {description && (

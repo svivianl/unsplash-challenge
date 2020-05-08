@@ -10,6 +10,20 @@
   padding: 2em;
 }
 
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.title > div > img {
+  max-width: 7em;
+  max-height: 7em;
+}
+
+.title > h3 {
+  text-align: center;
+}
+
 .photo-details {
   display: flex;
   flex-direction: column;
@@ -29,8 +43,8 @@
   .photo-details-modal {
     min-width: 15em;
     min-height: 15em;
-    max-width: 30vw;
-    max-height: 30vh;
+    max-width: 40vw;
+    max-height: 40vh;
   }
 
   .photo-details-modal > p {

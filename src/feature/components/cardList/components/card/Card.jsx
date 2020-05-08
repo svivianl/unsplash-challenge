@@ -21,11 +21,7 @@ const Card = ({ photo }) => {
         <img alt={alt_description} src={url} />
       </div>
       {isPhotoDetailsOpen && (
-        <PhotoDetails
-          user={user}
-          description={description}
-          handleClose={handleOnPhotoClick}
-        />
+        <PhotoDetails photo={photo} handleClose={handleOnPhotoClick} />
       )}
     </Fragment>
   );
