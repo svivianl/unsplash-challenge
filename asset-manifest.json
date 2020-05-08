@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/unsplash-challenge/static/css/main.bc0f36d1.chunk.css",
+    "main.js": "/unsplash-challenge/static/js/main.faa862e6.chunk.js",
+    "main.js.map": "/unsplash-challenge/static/js/main.faa862e6.chunk.js.map",
+    "runtime-main.js": "/unsplash-challenge/static/js/runtime-main.6210ece2.js",
+    "runtime-main.js.map": "/unsplash-challenge/static/js/runtime-main.6210ece2.js.map",
+    "static/js/2.7dda083d.chunk.js": "/unsplash-challenge/static/js/2.7dda083d.chunk.js",
+    "static/js/2.7dda083d.chunk.js.map": "/unsplash-challenge/static/js/2.7dda083d.chunk.js.map",
+    "index.html": "/unsplash-challenge/index.html",
+    "precache-manifest.bc2c6b085fd4dab6eb01308083f20b98.js": "/unsplash-challenge/precache-manifest.bc2c6b085fd4dab6eb01308083f20b98.js",
+    "service-worker.js": "/unsplash-challenge/service-worker.js",
+    "static/css/main.bc0f36d1.chunk.css.map": "/unsplash-challenge/static/css/main.bc0f36d1.chunk.css.map",
+    "static/js/2.7dda083d.chunk.js.LICENSE.txt": "/unsplash-challenge/static/js/2.7dda083d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6210ece2.js",
+    "static/js/2.7dda083d.chunk.js",
+    "static/css/main.bc0f36d1.chunk.css",
+    "static/js/main.faa862e6.chunk.js"
+  ]
+}
