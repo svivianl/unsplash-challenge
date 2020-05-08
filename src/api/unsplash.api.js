@@ -1,13 +1,13 @@
 import axios from "axios";
 
-export const apiUrl = (query) => {
-  return `https://api.unsplash.com/search/photos?page=1&query=${query}&client_id=${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}`;
+export const apiUrl = (query, page = 1) => {
+  return `https://api.unsplash.com/search/photos?page=${page}&query=${query}&client_id=${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}&count=10`;
 };
 
-export const getPhotos = async (query) => {
+export const getPhotos = async (query, page) => {
   return new Promise((resolve, reject) => {
     axios
-      .get(apiUrl(query))
+      .get(apiUrl(query, page))
       .then((response) => {
         if (
           (response.status === 200 && !response) ||

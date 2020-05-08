@@ -5,7 +5,7 @@ const ResultText = ({ error, total }) => {
     <p>{error}</p>
   ) : (
     <p>
-      Found <strong>{total}</strong> results
+      Found <strong>{total}</strong> images
     </p>
   );
 };
