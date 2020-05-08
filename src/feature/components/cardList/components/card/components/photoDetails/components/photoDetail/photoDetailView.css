@@ -1,9 +1,12 @@
-.photo-details > div {
+.detail {
   margin: 1em 0;
   display: flex;
+}
+
+.align-center {
   align-items: center;
 }
 
-.photo-details > div > strong {
+.detail > strong {
   margin-right: 1em;
 }
