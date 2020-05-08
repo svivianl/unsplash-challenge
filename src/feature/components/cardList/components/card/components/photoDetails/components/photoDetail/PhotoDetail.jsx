@@ -1,10 +1,10 @@
 import React from "react";
 import "./photoDetail.css";
 
-const PhotoDetail = ({ label, value }) => {
+const PhotoDetail = ({ label, value, children }) => {
   return (
     <div>
-      {label}: <span>{value}</span>
+      <strong>{label}:</strong> {children} <span>{value}</span>
     </div>
   );
 };

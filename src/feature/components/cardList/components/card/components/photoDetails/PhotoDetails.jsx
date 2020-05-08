@@ -1,9 +1,12 @@
 import React from "react";
+import moment from "moment";
 import PhotoDetail from "./components/photoDetail/PhotoDetail";
 import "../../../../../../mainPage.css";
 import "./photoDetails.css";
 
 const PhotoDetails = ({
+  created_at,
+  likes,
   alt_description,
   description,
   user,
@@ -12,6 +15,7 @@ const PhotoDetails = ({
 }) => {
   const { name, location } = user;
   const url = urls.small;
+  const createdAt = moment.utc(created_at).format("MMMM D, YYYY");
 
   return (
     <div className="backdrop" onClick={handleClose}>
@@ -29,8 +33,16 @@ const PhotoDetails = ({
             {description && (
               <PhotoDetail label="Description" value={description} />
             )}
-            <PhotoDetail label="Photographer's name" value={name} />
+            <PhotoDetail label="Author" value={name}>
+              {user && user.profile_image && user.profile_image.small && (
+                <div className="profile-image">
+                  <img alt={name} src={user.profile_image.small} />
+                </div>
+              )}
+            </PhotoDetail>
             <PhotoDetail label="Location" value={location} />
+            <PhotoDetail label="Likes" value={likes} />
+            <PhotoDetail label="Created at" value={createdAt} />
           </div>
         </div>
       </div>
