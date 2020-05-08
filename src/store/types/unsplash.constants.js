@@ -1,3 +1,6 @@
+export const GET_INITIAL_PHOTOS = "Unsplash/GetInitialPhotos";
+export const GET_INITIAL_PHOTOS_SUCCESS = "Unsplash/GetInitialPhotosSuccess";
+export const GET_INITIAL_PHOTOS_ERROR = "Unsplash/GetInitialPhotosError";
 export const GET_PHOTOS = "Unsplash/GetPhotos";
 export const GET_PHOTOS_SUCCESS = "Unsplash/GetPhotosSuccess";
 export const GET_PHOTOS_ERROR = "Unsplash/GetPhotosError";

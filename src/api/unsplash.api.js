@@ -6,14 +6,13 @@ export const apiUrl = (path) => {
   return `https://api.unsplash.com${path}`;
 };
 
-export const getPhotos = async (query, page) => {
+export const getPhotos = async (query, page, orientation) => {
+  const url = orientation
+    ? `/search/photos?page=${page}&query=${query}&client_id=${accesskey}&orientation=${orientation}`
+    : `/search/photos?page=${page}&query=${query}&client_id=${accesskey}`;
   return new Promise((resolve, reject) => {
     axios
-      .get(
-        apiUrl(
-          `/search/photos?page=${page}&query=${query}&client_id=${accesskey}`
-        )
-      )
+      .get(apiUrl(url))
       .then((response) => {
         if (
           (response.status === 200 && !response) ||

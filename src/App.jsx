@@ -1,16 +1,43 @@
-import React from "react";
-import MainPage from "./feature/MainPage";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import CardList from "./components/cardList/CardList";
+import SearchForm from "./components/searchForm/SearchForm";
+import * as actions from "./store/actions";
 import "./App.css";
 
-function App() {
+const App = () => {
+  const [query, setQuery] = useState("");
+  const [orientation, setOrientation] = useState("");
+  const [page, setPage] = useState(2);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (query) {
+      dispatch(actions.getInitialPhotos(query, 1, orientation));
+      setPage(2);
+    }
+  }, [dispatch, orientation, query]);
+
   return (
     <div className="App">
       <header>
         <h1>Upslash Challenge</h1>
       </header>
-      <MainPage />
+      <main>
+        <SearchForm
+          setQuery={setQuery}
+          orientation={orientation}
+          setOrientation={setOrientation}
+        />
+        <CardList
+          query={query}
+          page={page}
+          orientation={orientation}
+          setPage={setPage}
+        />
+      </main>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,5 +1,8 @@
 import { cloneDeep } from "lodash";
 import {
+  GET_INITIAL_PHOTOS,
+  GET_INITIAL_PHOTOS_SUCCESS,
+  GET_INITIAL_PHOTOS_ERROR,
   GET_PHOTOS,
   GET_PHOTOS_SUCCESS,
   GET_PHOTOS_ERROR,
@@ -14,8 +17,6 @@ const initialStateSearch = {
   error: "",
   total: 0,
   totalPages: 0,
-  query: "",
-  page: 1,
   photoDetails: {},
 };
 
@@ -23,18 +24,20 @@ export const upslashReducer = (state = initialStateSearch, action = {}) => {
   const photosCloned = cloneDeep(state.photos);
 
   switch (action.type) {
-    case GET_PHOTOS:
-      const { query, page } = action.payload;
-
+    case GET_INITIAL_PHOTOS:
       return {
         ...state,
         isLoading: true,
-        photos: query === state.query ? photosCloned : [],
+        photos: [],
         error: "",
-        total: query === state.query ? state.total : 0,
-        totalPages: query === state.query ? state.totalPages : 0,
-        page: query === state.query ? page : 1,
-        query,
+        total: 0,
+        totalPages: 0,
+      };
+    case GET_PHOTOS:
+      return {
+        ...state,
+        isLoading: true,
+        error: "",
       };
     case GET_PHOTO_DETAILS:
       return {
@@ -42,13 +45,21 @@ export const upslashReducer = (state = initialStateSearch, action = {}) => {
         isLoading: true,
         photoDetails: {},
       };
-    case GET_PHOTOS_SUCCESS:
-      const { results, total, total_pages } = action.payload;
+    case GET_INITIAL_PHOTOS_SUCCESS:
+      const resultsCloned = cloneDeep(action.payload.results);
       return {
         ...state,
-        photos: [...photosCloned, ...results],
-        total,
-        totalPages: total_pages,
+        photos: resultsCloned,
+        total: action.payload.total,
+        totalPages: action.payload.total_pages,
+        isLoading: false,
+      };
+    case GET_PHOTOS_SUCCESS:
+      return {
+        ...state,
+        photos: [...photosCloned, ...action.payload.results],
+        total: action.payload.total,
+        totalPages: action.payload.total_pages,
         isLoading: false,
       };
     case GET_PHOTO_DETAILS_SUCCESS:
@@ -57,6 +68,7 @@ export const upslashReducer = (state = initialStateSearch, action = {}) => {
         photoDetails: action.payload,
         isLoading: false,
       };
+    case GET_INITIAL_PHOTOS_ERROR:
     case GET_PHOTOS_ERROR:
     case GET_PHOTO_DETAILS_ERROR:
       return { ...state, error: action.payload, isLoading: false };
