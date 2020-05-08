@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import PhotoDetails from "./components/photoDetailsA/PhotoDetails";
+import PhotoDetails from "./components/photoDetails/PhotoDetails";
 import "./card.css";
 
 const Card = ({ photo }) => {
