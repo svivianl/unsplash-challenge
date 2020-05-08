@@ -5,7 +5,7 @@ import "./card.css";
 const Card = ({ photo }) => {
   const [isPhotoDetailsOpen, setIsPhotoDetailsOpen] = useState(false);
   const url = photo.urls.small;
-  const { alt_description, user, description } = photo;
+  const { alt_description } = photo;
 
   const handleOnCardClick = () => {
     setIsPhotoDetailsOpen(true);
@@ -21,7 +21,7 @@ const Card = ({ photo }) => {
         <img alt={alt_description} src={url} />
       </div>
       {isPhotoDetailsOpen && (
-        <PhotoDetails photo={photo} handleClose={handleOnPhotoClick} />
+        <PhotoDetails {...photo} handleClose={handleOnPhotoClick} />
       )}
     </Fragment>
   );

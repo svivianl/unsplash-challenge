@@ -3,10 +3,15 @@ import PhotoDetail from "./components/photoDetail/PhotoDetail";
 import "../../../../../../mainPage.css";
 import "./photoDetails.css";
 
-const PhotoDetails = ({ photo, handleClose }) => {
-  const { name, location } = photo.user;
-  const url = photo.urls.small;
-  const { alt_description, description } = photo;
+const PhotoDetails = ({
+  alt_description,
+  description,
+  user,
+  urls,
+  handleClose,
+}) => {
+  const { name, location } = user;
+  const url = urls.small;
 
   return (
     <div className="backdrop" onClick={handleClose}>
