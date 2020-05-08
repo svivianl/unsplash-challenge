@@ -27,5 +27,7 @@ button {
 @media (min-width: 600px) {
   .search-form {
     margin: 2em 1em;
+    max-width: 50em;
+    width: 100%;
   }
 }
