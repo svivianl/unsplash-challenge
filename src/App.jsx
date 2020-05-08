@@ -1,4 +1,5 @@
 import React from "react";
+import MainPage from "./feature/MainPage";
 import "./App.css";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
       <header>
         <h1>Upslash Challenge</h1>
       </header>
+      <MainPage />
     </div>
   );
 }
