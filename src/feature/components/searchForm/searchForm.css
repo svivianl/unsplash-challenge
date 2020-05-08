@@ -1,0 +1,21 @@
+.search-form {
+  margin: 2em 0;
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  height: 2rem;
+  padding: 0.5em;
+  border-radius: 4px;
+}
+
+button {
+  color: #e2f3f5;
+  background-color: #6c757d;
+  border-color: #6c757d;
+  padding: 0.5em;
+  margin-left: 0.5em;
+  min-width: 7em;
+  border-radius: 4px;
+}
