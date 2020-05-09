@@ -1,5 +1,32 @@
 import axios from "axios";
 
+const parseError = (parameters) => {
+  const messages = parameters.messages;
+  // error
+  if (messages) {
+    if (messages instanceof Array) {
+      return messages;
+    }
+    return messages;
+  }
+  return parameters;
+};
+
+const getError = (error) => {
+  if (error.response) {
+    // Request made and server responded
+    return parseError(error.response.data);
+  }
+
+  if (error.request) {
+    // The request was made but no response was received
+    return "Server is down. Please contact the admin.";
+  }
+
+  // Something happened in setting up the request that triggered an Error
+  return error;
+};
+
 const accesskey = process.env.REACT_APP_UNSPLASH_ACCESS_KEY;
 
 export const apiUrl = (path) => {
@@ -7,9 +34,11 @@ export const apiUrl = (path) => {
 };
 
 export const getPhotos = async (query, page, orientation) => {
-  const url = orientation
-    ? `/search/photos?page=${page}&query=${query}&client_id=${accesskey}&orientation=${orientation}`
-    : `/search/photos?page=${page}&query=${query}&client_id=${accesskey}`;
+  const path = query
+    ? `/search/photos?page=${page}&query=${query}&client_id=${accesskey}`
+    : `/photos/random?page=${page}&client_id=${accesskey}&count=10`;
+  const url = orientation ? `${path}&orientation=${orientation}` : path;
+
   return new Promise((resolve, reject) => {
     axios
       .get(apiUrl(url))
@@ -23,7 +52,7 @@ export const getPhotos = async (query, page, orientation) => {
 
         return resolve(response.data);
       })
-      .catch((error) => reject("Bad request"));
+      .catch((error) => reject(getError(error)));
   });
 };
 
@@ -41,6 +70,6 @@ export const getPhotoDetails = async (photoId) => {
 
         return resolve(response.data);
       })
-      .catch((error) => reject("Bad request"));
+      .catch((error) => reject(getError(error)));
   });
 };

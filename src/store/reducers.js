@@ -46,7 +46,10 @@ export const unsplashReducer = (state = initialStateSearch, action = {}) => {
         photoDetails: {},
       };
     case GET_INITIAL_PHOTOS_SUCCESS:
-      const resultsCloned = cloneDeep(action.payload.results);
+      const resultsCloned = action.payload.hasOwnProperty("results")
+        ? cloneDeep(action.payload.results)
+        : cloneDeep(action.payload);
+
       return {
         ...state,
         photos: resultsCloned,
@@ -55,9 +58,13 @@ export const unsplashReducer = (state = initialStateSearch, action = {}) => {
         isLoading: false,
       };
     case GET_PHOTOS_SUCCESS:
+      const morePhotos = action.payload.hasOwnProperty("results")
+        ? action.payload.results
+        : action.payload;
+
       return {
         ...state,
-        photos: [...photosCloned, ...action.payload.results],
+        photos: [...photosCloned, ...morePhotos],
         total: action.payload.total,
         totalPages: action.payload.total_pages,
         isLoading: false,
