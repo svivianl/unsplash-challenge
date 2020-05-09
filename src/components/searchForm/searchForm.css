@@ -26,6 +26,7 @@ button {
   margin-top: 1em;
   min-width: 7em;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .mobile {
