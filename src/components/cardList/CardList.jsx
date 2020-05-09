@@ -14,28 +14,30 @@ const CardList = ({ query, page, orientation, setPage }) => {
 
   return (
     <div className="result">
-      {query && <ResultTextView error={error} total={total} />}
-      <InfiniteScroll
-        dataLength={photos.length} //This is important field to render the next data
-        next={() => {
-          dispatch(actions.getPhotos(query, page, orientation));
-          setPage(page + 1);
-        }}
-        hasMore={photos.length < total}
-        endMessage={
-          Boolean(photos && photos.length) && (
-            <p style={{ textAlign: "center" }}>
-              <b>Yay! You have seen it all</b>
-            </p>
-          )
-        }
-      >
-        <div className="cards">
-          {photos.map((photo) => {
-            return <Card key={photo.id} photo={photo} />;
-          })}
-        </div>
-      </InfiniteScroll>
+      {(error || total) && <ResultTextView error={error} total={total} />}
+      {photos && (
+        <InfiniteScroll
+          dataLength={photos.length} //This is important field to render the next data
+          next={() => {
+            dispatch(actions.getPhotos(query, page, orientation));
+            setPage(page + 1);
+          }}
+          hasMore={total ? photos.length < total : true}
+          endMessage={
+            Boolean(photos && photos.length) && (
+              <p style={{ textAlign: "center" }}>
+                <b>Yay! You have seen it all</b>
+              </p>
+            )
+          }
+        >
+          <div className="cards">
+            {photos.map((photo) => {
+              return <Card key={photo.id} photo={photo} />;
+            })}
+          </div>
+        </InfiniteScroll>
+      )}
       {isLoading && <Loader />}
     </div>
   );

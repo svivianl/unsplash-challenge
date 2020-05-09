@@ -24,6 +24,7 @@ const SearchBox = ({ setQuery, orientation, setOrientation }) => {
           placeholder="search photos"
           value={inputValue}
           onChange={handleChange}
+          onBlur={handleOnSubmit}
         />
         <div className="mobile">
           <Orientations

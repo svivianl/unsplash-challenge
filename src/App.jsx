@@ -12,10 +12,8 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (query) {
-      dispatch(actions.getInitialPhotos(query, 1, orientation));
-      setPage(2);
-    }
+    dispatch(actions.getInitialPhotos(query, 1, orientation));
+    setPage(2);
   }, [dispatch, orientation, query]);
 
   return (
