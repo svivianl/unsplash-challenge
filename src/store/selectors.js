@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 
-export const getState = (state) => state.upslashState;
+export const getState = (state) => state.unsplashState;
 
 export const getIsLoading = createSelector(
   getState,

@@ -20,7 +20,7 @@ const initialStateSearch = {
   photoDetails: {},
 };
 
-export const upslashReducer = (state = initialStateSearch, action = {}) => {
+export const unsplashReducer = (state = initialStateSearch, action = {}) => {
   const photosCloned = cloneDeep(state.photos);
 
   switch (action.type) {
