@@ -11,11 +11,15 @@
   justify-content: center;
 }
 
-input {
+input.search {
+  display: block;
   height: 2rem;
   padding: 0.5em;
   border-radius: 4px;
-  flex-grow: 1;
+}
+
+.orientations-container {
+  display: block;
 }
 
 button {
@@ -27,14 +31,7 @@ button {
   min-width: 7em;
   border-radius: 4px;
   cursor: pointer;
-}
-
-.mobile {
   display: block;
-}
-
-.desktop {
-  display: none;
 }
 
 @media (min-width: 600px) {
@@ -44,20 +41,25 @@ button {
     width: 100%;
   }
 
-  .mobile {
-    display: none;
-  }
-
-  .desktop {
-    display: block;
-  }
-
   .search-container {
     flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  input.search {
+    display: inline-block;
+    flex-grow: 1;
+    width: 80%;
   }
 
   button {
+    display: inline-block;
     margin-top: 0;
     margin-left: 0.5em;
+  }
+
+  .orientations-container {
+    width: 100%;
+    order: 1;
   }
 }
