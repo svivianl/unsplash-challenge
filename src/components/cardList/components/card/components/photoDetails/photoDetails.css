@@ -41,7 +41,7 @@
   justify-content: flex-end;
   cursor: pointer;
   color: darkgray;
-  margin-right: 1em;
+  margin: 2em 1em 0 0;
 }
 
 .profile-image {
@@ -59,8 +59,9 @@
   .photo-details-modal {
     min-width: 15em;
     min-height: 15em;
-    max-width: 40vw;
-    max-height: 70vh;
+    max-width: 40em;
+    max-height: 40em;
+    overflow-y: auto;
   }
 
   .photo-details-modal > p {
