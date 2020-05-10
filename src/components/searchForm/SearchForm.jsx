@@ -19,6 +19,7 @@ const SearchBox = ({ setQuery, orientation, setOrientation }) => {
     <form className="search-form" onSubmit={handleOnSubmit}>
       <div className="search-container">
         <input
+          className="search"
           aria-label="Search"
           type="search"
           placeholder="search photos"
@@ -26,9 +27,8 @@ const SearchBox = ({ setQuery, orientation, setOrientation }) => {
           onChange={handleChange}
           onBlur={handleOnSubmit}
         />
-        <div className="mobile">
+        <div className="orientations-container">
           <Orientations
-            size="mobile"
             orientation={orientation}
             setOrientation={setOrientation}
           />
@@ -36,13 +36,6 @@ const SearchBox = ({ setQuery, orientation, setOrientation }) => {
         <button type="submit" alt="Search">
           Search
         </button>
-      </div>
-      <div className="desktop">
-        <Orientations
-          size="desktop"
-          orientation={orientation}
-          setOrientation={setOrientation}
-        />
       </div>
     </form>
   );
