@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Orientations from "./orientations/Orientations";
+import * as selectors from "../../store/selectors";
 import "./searchForm.css";
 
 const SearchBox = ({ setQuery, orientation, setOrientation }) => {
   const [inputValue, setInputValue] = useState("");
+  const isLoading = useSelector(selectors.getIsLoading);
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -33,7 +36,7 @@ const SearchBox = ({ setQuery, orientation, setOrientation }) => {
             setOrientation={setOrientation}
           />
         </div>
-        <button type="submit" alt="Search">
+        <button type="submit" alt="Search" disabled={isLoading}>
           Search
         </button>
       </div>
