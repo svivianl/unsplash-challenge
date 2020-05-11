@@ -64,10 +64,6 @@
     overflow-y: auto;
   }
 
-  .photo-details-modal > p {
-    display: none;
-  }
-
   .title > h3 {
     margin-left: 1em;
   }
