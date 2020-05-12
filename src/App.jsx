@@ -19,7 +19,7 @@ const App = () => {
   return (
     <div className="App">
       <header>
-        <h1>Unsplash Challenge</h1>
+        <h1>Unsplash Gallery</h1>
       </header>
       <main>
         <SearchForm

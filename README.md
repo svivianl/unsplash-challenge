@@ -4,6 +4,10 @@ Responsive Unsplash gallery app.
 
 ## Images
 
+### Main page
+
+![Image of Main page](./img/main.png)
+
 ### Result
 
 ![Image of Result](./img/result.png)

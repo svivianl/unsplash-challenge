@@ -11,7 +11,7 @@
   justify-content: center;
 }
 
-input.search {
+input[type="search"] {
   display: block;
   height: 2rem;
   padding: 0.5em;
@@ -46,7 +46,7 @@ button {
     flex-wrap: wrap;
   }
 
-  input.search {
+  input[type="search"] {
     display: inline-block;
     flex-grow: 1;
     width: 80%;

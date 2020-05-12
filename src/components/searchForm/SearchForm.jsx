@@ -22,7 +22,7 @@ const SearchBox = ({ setQuery, orientation, setOrientation }) => {
     <form className="search-form" onSubmit={handleOnSubmit}>
       <div className="search-container">
         <input
-          className="search"
+          // className="search"
           aria-label="Search"
           type="search"
           placeholder="search photos"
