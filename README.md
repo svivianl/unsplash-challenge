@@ -2,6 +2,13 @@
 
 Responsive Unsplash gallery app.
 
+## Frontend
+
+- React
+- Redux-thunk
+- Infinite scroll
+- Axios
+
 ## Images
 
 ### Main page
