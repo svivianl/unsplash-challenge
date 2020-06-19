@@ -27,16 +27,14 @@ const getError = (error) => {
   return error;
 };
 
-const accesskey = process.env.REACT_APP_UNSPLASH_ACCESS_KEY;
-
 export const apiUrl = (path) => {
-  return `https://api.unsplash.com${path}`;
+  return `${process.env.REACT_APP_SERVER_API}${path}`;
 };
 
 export const getPhotos = async (query, page, orientation) => {
   const path = query
-    ? `/search/photos?page=${page}&query=${query}&client_id=${accesskey}`
-    : `/photos/random?page=${page}&client_id=${accesskey}&count=10`;
+    ? `/photos?page=${page}&query=${query}`
+    : `/photos?page=${page}&count=10`;
   const url = orientation ? `${path}&orientation=${orientation}` : path;
 
   return new Promise((resolve, reject) => {
@@ -59,7 +57,7 @@ export const getPhotos = async (query, page, orientation) => {
 export const getPhotoDetails = async (photoId) => {
   return new Promise((resolve, reject) => {
     axios
-      .get(apiUrl(`/photos/${photoId}/?client_id=${accesskey}`))
+      .get(apiUrl(`/photos/${photoId}`))
       .then((response) => {
         if (
           (response.status === 200 && !response) ||
