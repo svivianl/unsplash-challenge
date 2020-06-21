@@ -1,0 +1,12 @@
+.detail {
+  margin: 1em 0;
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.detail > strong {
+  margin-right: 1em;
+}
