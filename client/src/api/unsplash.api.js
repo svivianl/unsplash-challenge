@@ -27,10 +27,6 @@ const getError = (error) => {
   return error;
 };
 
-export const apiUrl = (path) => {
-  return `${process.env.REACT_APP_SERVER_API}${path}`;
-};
-
 export const getPhotos = async (query, page, orientation) => {
   const path = query
     ? `/api/photos?page=${page}&query=${query}`
@@ -39,7 +35,7 @@ export const getPhotos = async (query, page, orientation) => {
 
   return new Promise((resolve, reject) => {
     axios
-      .get(apiUrl(url))
+      .get(url)
       .then((response) => {
         if (
           (response.status === 200 && !response) ||
@@ -57,7 +53,7 @@ export const getPhotos = async (query, page, orientation) => {
 export const getPhotoDetails = async (photoId) => {
   return new Promise((resolve, reject) => {
     axios
-      .get(apiUrl(`/api/photos/${photoId}`))
+      .get(`/api/photos/${photoId}`)
       .then((response) => {
         if (
           (response.status === 200 && !response) ||
