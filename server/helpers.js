@@ -13,6 +13,7 @@ const getPhoto = (url) => {
     axios
       .get(apiUrl(url))
       .then((response) => {
+        console.log("getPhoto -> response.data.lenght: ", response.data.length);
         if (
           (response.status === 200 && !response) ||
           (response && response.data.total === 0)
